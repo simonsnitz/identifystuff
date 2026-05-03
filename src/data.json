@@ -1,0 +1,24 @@
+{
+  "topics": {
+    "codons": {
+      "label": "codons",
+      "prompt": "Which amino acid does this codon code for?",
+      "pairs": []
+    },
+    "trees": {
+      "label": "trees",
+      "prompt": "Which tree is this?",
+      "pairs": []
+    },
+    "mushrooms": {
+      "label": "mushrooms",
+      "prompt": "Which mushroom is this?",
+      "pairs": []
+    },
+    "metabolites": {
+      "label": "metabolites",
+      "prompt": "Which metabolite is this?",
+      "pairs": []
+    }
+  }
+}
