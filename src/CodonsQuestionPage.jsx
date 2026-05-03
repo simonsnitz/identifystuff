@@ -1,8 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import data from './data.json'
 
 const NEXT_QUESTION_DELAY_MS = 350
 const FLASH_MS = 300
+// Avoid repeating any of the last N question subjects.
+const RECENT_LIMIT = 3
 
 const DISPLAYS = [
   { value: 'three', label: '3-letter (Phe)' },
@@ -68,6 +70,10 @@ export default function CodonsQuestionPage({ onExit }) {
   const [verdict, setVerdict] = useState(null) // { index, correct }
 
   const aminoAcids = topic.aminoAcids
+  // Sliding window of recent question signatures so we don't repeat the
+  // same prompt back-to-back. The signature is keyed by what's *visible*
+  // (the codon string in codon-prompt modes, the amino acid in aa-prompt modes).
+  const recentRef = useRef([])
 
   // Flat list of {codon, aa} for sampling distractor codons.
   const allCodons = useMemo(
@@ -97,8 +103,15 @@ export default function CodonsQuestionPage({ onExit }) {
       ? aminoAcids.filter((aa) => aa.three !== 'Stop')
       : aminoAcids
 
-    const correctAA = pool[Math.floor(Math.random() * pool.length)]
-    const correctCodon = correctAA.codons[Math.floor(Math.random() * correctAA.codons.length)]
+    // Re-roll up to a few times if we'd repeat a recent question.
+    let correctAA, correctCodon, sig
+    for (let attempt = 0; attempt < 12; attempt++) {
+      correctAA = pool[Math.floor(Math.random() * pool.length)]
+      correctCodon = correctAA.codons[Math.floor(Math.random() * correctAA.codons.length)]
+      sig = questionKind === 'codon' ? `codon:${correctCodon}` : `aa:${correctAA.three}`
+      if (!recentRef.current.includes(sig)) break
+    }
+    recentRef.current = [sig, ...recentRef.current].slice(0, RECENT_LIMIT)
 
     const questionItem = questionKind === 'codon' ? correctCodon : correctAA
 
