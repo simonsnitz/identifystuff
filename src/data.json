@@ -3,7 +3,29 @@
     "codons": {
       "label": "codons",
       "prompt": "Which amino acid does this codon code for?",
-      "pairs": []
+      "aminoAcids": [
+        { "name": "Alanine",       "three": "Ala", "one": "A", "codons": ["GCU", "GCC", "GCA", "GCG"] },
+        { "name": "Arginine",      "three": "Arg", "one": "R", "codons": ["CGU", "CGC", "CGA", "CGG", "AGA", "AGG"] },
+        { "name": "Asparagine",    "three": "Asn", "one": "N", "codons": ["AAU", "AAC"] },
+        { "name": "Aspartate",     "three": "Asp", "one": "D", "codons": ["GAU", "GAC"] },
+        { "name": "Cysteine",      "three": "Cys", "one": "C", "codons": ["UGU", "UGC"] },
+        { "name": "Glutamine",     "three": "Gln", "one": "Q", "codons": ["CAA", "CAG"] },
+        { "name": "Glutamate",     "three": "Glu", "one": "E", "codons": ["GAA", "GAG"] },
+        { "name": "Glycine",       "three": "Gly", "one": "G", "codons": ["GGU", "GGC", "GGA", "GGG"] },
+        { "name": "Histidine",     "three": "His", "one": "H", "codons": ["CAU", "CAC"] },
+        { "name": "Isoleucine",    "three": "Ile", "one": "I", "codons": ["AUU", "AUC", "AUA"] },
+        { "name": "Leucine",       "three": "Leu", "one": "L", "codons": ["UUA", "UUG", "CUU", "CUC", "CUA", "CUG"] },
+        { "name": "Lysine",        "three": "Lys", "one": "K", "codons": ["AAA", "AAG"] },
+        { "name": "Methionine",    "three": "Met", "one": "M", "codons": ["AUG"] },
+        { "name": "Phenylalanine", "three": "Phe", "one": "F", "codons": ["UUU", "UUC"] },
+        { "name": "Proline",       "three": "Pro", "one": "P", "codons": ["CCU", "CCC", "CCA", "CCG"] },
+        { "name": "Serine",        "three": "Ser", "one": "S", "codons": ["UCU", "UCC", "UCA", "UCG", "AGU", "AGC"] },
+        { "name": "Threonine",     "three": "Thr", "one": "T", "codons": ["ACU", "ACC", "ACA", "ACG"] },
+        { "name": "Tryptophan",    "three": "Trp", "one": "W", "codons": ["UGG"] },
+        { "name": "Tyrosine",      "three": "Tyr", "one": "Y", "codons": ["UAU", "UAC"] },
+        { "name": "Valine",        "three": "Val", "one": "V", "codons": ["GUU", "GUC", "GUA", "GUG"] },
+        { "name": "Stop",          "three": "Stop", "one": "*", "codons": ["UAA", "UAG", "UGA"] }
+      ]
     },
     "trees": {
       "label": "trees",
