@@ -29,8 +29,29 @@
     },
     "trees": {
       "label": "trees",
-      "prompt": "Which tree is this?",
-      "pairs": []
+      "prompt": "Which tree leaf is this?",
+      "species": [
+        { "name": "Sugar Maple",         "slug": "sugar-maple" },
+        { "name": "Red Maple",           "slug": "red-maple" },
+        { "name": "White Oak",           "slug": "white-oak" },
+        { "name": "Northern Red Oak",    "slug": "northern-red-oak" },
+        { "name": "American Beech",      "slug": "american-beech" },
+        { "name": "Yellow Birch",        "slug": "yellow-birch" },
+        { "name": "Paper Birch",         "slug": "paper-birch" },
+        { "name": "Eastern White Pine",  "slug": "eastern-white-pine" },
+        { "name": "Eastern Hemlock",     "slug": "eastern-hemlock" },
+        { "name": "American Elm",        "slug": "american-elm" },
+        { "name": "Black Cherry",        "slug": "black-cherry" },
+        { "name": "Tulip Tree",          "slug": "tulip-tree" },
+        { "name": "American Sycamore",   "slug": "american-sycamore" },
+        { "name": "Shagbark Hickory",    "slug": "shagbark-hickory" },
+        { "name": "White Ash",           "slug": "white-ash" },
+        { "name": "Sassafras",           "slug": "sassafras" },
+        { "name": "American Basswood",   "slug": "american-basswood" },
+        { "name": "Black Walnut",        "slug": "black-walnut" },
+        { "name": "Eastern Cottonwood",  "slug": "eastern-cottonwood" },
+        { "name": "Quaking Aspen",       "slug": "quaking-aspen" }
+      ]
     },
     "mushrooms": {
       "label": "mushrooms",
