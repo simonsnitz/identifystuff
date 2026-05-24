@@ -1,5 +1,18 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import SmilesDrawer from 'smiles-drawer'
 import data from './data.json'
+
+// Reuse one drawer per pixel size — Drawer instances are cheap but creating a
+// fresh one for every render is wasteful.
+const drawerCache = new Map()
+function getDrawer(size) {
+  let d = drawerCache.get(size)
+  if (!d) {
+    d = new SmilesDrawer.Drawer({ width: size, height: size, padding: 10, bondThickness: 1 })
+    drawerCache.set(size, d)
+  }
+  return d
+}
 
 const NEXT_QUESTION_DELAY_MS = 350
 const FLASH_MS = 300
@@ -41,12 +54,26 @@ function toDNA(codon) {
 }
 
 function AminoAcidImage({ aa }) {
+  const canvasRef = useRef(null)
+  useEffect(() => {
+    if (!canvasRef.current || !aa.smiles) return
+    const canvas = canvasRef.current
+    const size = canvas.width
+    SmilesDrawer.parse(
+      aa.smiles,
+      (tree) => getDrawer(size).draw(tree, canvas, 'light', false),
+      (err) => console.warn('SMILES parse failed for', aa.three, err),
+    )
+  }, [aa.smiles, aa.three])
+  // 240px canvas pixel size; CSS rules cap visual height/width per context.
   return (
-    <img
+    <canvas
+      ref={canvasRef}
       className="aa-image"
-      src={`/aa/${aa.three}.png`}
-      alt={aa.name}
+      width={240}
+      height={240}
       title={aa.name}
+      aria-label={aa.name}
     />
   )
 }
